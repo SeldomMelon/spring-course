@@ -2,8 +2,24 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:component-scan base-package="ru.maxima.spring"/>
+    <bean id="classicMusic" class="ru.maxima.spring.player.ClassicMusic"/>
+    <bean id="rockMusic" class="ru.maxima.spring.player.RockMusic"/>
+    <bean id="rapMusic" class="ru.maxima.spring.player.RapMusic"/>
+
+    <bean id="musicPlayer" class="ru.maxima.spring.player.MusicPlayer">
+        <property name="musicList" >
+            <list>
+                <ref bean="classicMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="rapMusic"/>
+            </list>
+        </property>
+    </bean>
+
 </beans>

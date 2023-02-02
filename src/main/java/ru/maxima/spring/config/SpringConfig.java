@@ -8,17 +8,19 @@ import ru.maxima.spring.player.Music;
 import ru.maxima.spring.player.MusicPlayer;
 import ru.maxima.spring.player.RockMusic;
 
+import java.util.List;
+
 @Configuration
 @PropertySource("classpath:musicPlayer.properties")
 public class SpringConfig {
+
     @Bean
     public RockMusic rockMusic () {
         return new RockMusic();
     }
 
     @Bean
-    public MusicPlayer musicPlayer () {
-        return new MusicPlayer(rockMusic());
+   public MusicPlayer musicPlayer () {
+        return new MusicPlayer();
     }
-
 }
